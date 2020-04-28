@@ -1,5 +1,6 @@
 import { loadTodayList } from './loadTodayList';
 import { createTodayList } from './createTodayList';
+import { formToTask } from './formHelper';
 //To do item, this should be one item out of a list or project
 //I think overall project goals will be toDos.
 let allTasks = []
@@ -17,11 +18,11 @@ const project = (name, complete) => {
 	return { name, index, complete };
 }
 
-const task1 = task("Walk dog", "Walk dog", "Apr 24");
-const task2 = task("R2D", "Walk dog", "Apr 25");
-const task3 = task("Workout", "Walk dog", "Apr 24");
-const task4 = task("Read", "Walk dog", "Apr 21");
-const task5 = task("Meditate", "Walk dog", "Apr 24");
+const task1 = task("Walk dog", "Walk dog", "2020-04-28");
+const task2 = task("R2D", "Walk dog", "2020-04-23");
+const task3 = task("Workout", "Walk dog", "2020-04-28");
+const task4 = task("Read", "Walk dog", "2020-04-21");
+const task5 = task("Meditate", "Walk dog", "2020-04-28");
 allTasks.push(task1);
 allTasks.push(task2);
 allTasks.push(task3);
@@ -30,6 +31,17 @@ allTasks.push(task5);
 
 let todayList = createTodayList(allTasks);
 loadTodayList(todayList);
+var submitButton = document.getElementById("submit-new-task");
+submitButton.addEventListener('click', function() {
+	var newTask = formToTask();
+	allTasks.push(newTask);
+	var container = document.getElementById('container');
+	container.innerHTML = "";
+	let todayList = createTodayList(allTasks);
+	loadTodayList(todayList);
+	console.log(allTasks);
+});
+
 
 export { task, project }
 

@@ -5,7 +5,7 @@ function createTodayList(tasks) {
 	for (var i = 0; i < tasks.length; i++){
 		//log call returns the object here
 		let task = tasks[i];
-		if (task.dueDate == "Apr 24") {
+		if (task.dueDate == "2020-04-28") {
 			todayList.push(task);
 		}
 	}
